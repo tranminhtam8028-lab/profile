@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TERRA — Du Lịch Việt Nam Đẳng Cấp</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --deep: #1A1A14;
+    --forest: #2D4A32;
+    --gold: #C9A96E;
+    --sage: #7A9B76;
+    --mist: #E8EDE6;
+    --terra: #8B5E3C;
+    --ivory: #FAF7F2;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--deep);
+    color: var(--cream);
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* CURSOR */
+  .cursor {
+    position: fixed; width: 12px; height: 12px;
+    background: var(--gold); border-radius: 50%;
+    pointer-events: none; z-index: 9999;
+    transition: transform 0.15s ease, opacity 0.2s ease;
+    transform: translate(-50%, -50%);
+  }
+  .cursor-ring {
+    position: fixed; width: 40px; height: 40px;
+    border: 1px solid rgba(201,169,110,0.5);
+    border-radius: 50%; pointer-events: none; z-index: 9998;
+    transition: transform 0.4s cubic-bezier(.23,1,.32,1);
+    transform: translate(-50%, -50%);
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 2rem 4rem;
+    transition: all 0.5s ease;
+  }
+  nav.scrolled {
+    background: rgba(26,26,20,0.95);
+    backdrop-filter: blur(20px);
+    padding: 1.2rem 4rem;
+    border-bottom: 1px solid rgba(201,169,110,0.15);
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 300;
+    letter-spacing: 0.3em; color: var(--gold);
+    text-decoration: none;
+  }
+  .logo span { font-style: italic; }
+  .nav-links {
+    display: flex; gap: 2.5rem; list-style: none;
+  }
+  .nav-links a {
+    color: rgba(245,240,232,0.7); text-decoration: none;
+    font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: transparent; border: 1px solid var(--gold);
+    color: var(--gold); padding: 0.6rem 1.8rem;
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    cursor: none; transition: all 0.3s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--deep); }
+
+  /* HERO */
+  .hero {
+    position: relative; height: 100vh; overflow: hidden;
+    display: flex; align-items: flex-end; padding: 0 4rem 6rem;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #0D1F12 0%, #1A2E1A 30%, #2D1F0A 70%, #1A1410 100%);
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(26,26,20,0.95) 0%, rgba(26,26,20,0.2) 50%, transparent 100%);
+  }
+  /* Animated particles */
+  .particles { position: absolute; inset: 0; overflow: hidden; }
+  .particle {
+    position: absolute; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,169,110,0.6), transparent);
+    animation: float linear infinite;
+  }
+  @keyframes float {
+    0% { transform: translateY(100vh) scale(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 0.3; }
+    100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+  }
+  /* Mountain silhouettes */
+  .hero-mountains {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 50%;
+  }
+  .hero-mountains svg { width: 100%; height: 100%; }
+  .hero-content { position: relative; z-index: 2; max-width: 800px; }
